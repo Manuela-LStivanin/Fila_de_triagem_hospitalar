@@ -70,8 +70,3 @@ V:<tamanhoV> A:<tamanhoA> D:<tamanhoD> B:<tamanhoB> | Atendidos: <total>
 - Se um atendimento (`A`) for solicitado e não houver pacientes, o programa imprime o horário do atendimento seguido de "Sem pacientes aguardando atendimento." (com minuto formatado com dois dígitos quando necessário).
 
 
-Se quiser, eu posso:
-
-- adicionar exemplos de arquivos de entrada usados para testes automatizados;
-- criar um script PowerShell `build.ps1` para compilar automaticamente;
-- ou compilar o programa aqui para verificar se gera warnings/erros.

@@ -33,18 +33,22 @@ void chegada(queue<paciente> &vermelho, queue<paciente> &amarelo, queue<paciente
     switch (p.prioridade){
         case 'V':
             vermelho.push(p);
+            cout<<"Paciente adicionado com sucesso."<<endl;
             break;
         
         case 'A':
             amarelo.push(p);
+            cout<<"Paciente adicionado com sucesso."<<endl;
             break;
 
         case 'D':
             verde.push(p);
+            cout<<"Paciente adicionado com sucesso."<<endl;
             break;
 
         case 'B':
             branco.push(p);
+            cout<<"Paciente adicionado com sucesso."<<endl;
             break;
 
         default:
@@ -86,25 +90,29 @@ void atender (queue<paciente> &vermelho, queue<paciente> &amarelo, queue<pacient
         vermelho.pop();
         total_atendimento++;
         total_vermelho++;
+        cout << "Atendimento realizado com sucesso." << endl;
 
     } else if (amarelo.size() > 0 ){
         calcula_tempo(hora_atendimento, min_atendimento, amarelo, maior_espera);
         amarelo.pop();
         total_atendimento++;
         total_amarelo++;
+        cout << "Atendimento realizado com sucesso." << endl;
 
     } else if (verde.size() > 0 ){
         calcula_tempo(hora_atendimento, min_atendimento, verde, maior_espera);
         verde.pop();
         total_atendimento++;
         total_verde++;
+        cout << "Atendimento realizado com sucesso." << endl;
 
     } else if (branco.size() > 0 ){
         calcula_tempo(hora_atendimento, min_atendimento, branco, maior_espera);
         branco.pop();
         total_atendimento++;
         total_branco++;
-
+        cout << "Atendimento realizado com sucesso." << endl;
+        
     } else {
         //formatando para aparecer a hora certa, caso contrário ficaria 14:5 ao invés de 14:05 por exemplo
         if (min_atendimento < 10) {

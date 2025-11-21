@@ -25,7 +25,18 @@ void calcula_tamanho(queue<paciente> &vermelho, queue<paciente> &amarelo, queue<
 // Função para entrada de pacientes.
 void chegada(queue<paciente> &vermelho, queue<paciente> &amarelo, queue<paciente> &verde, queue<paciente> &branco, int &pico_lotacao){
     paciente p;
-    cin >> p.senha >> p.prioridade >> p.hora >> p.min;
+
+    cout << "Digite a senha: ";
+    cin >> p.senha;
+    
+    cout << "Digite a prioridade: ";
+    cin >> p.prioridade;
+    
+    cout << "Digite a hora: ";
+    cin>> p.hora;
+    
+    cout << "Digite os minutos: ";
+    cin >> p.min;
     
     // Converte prioridade para maiúscula
     p.prioridade = toupper(p.prioridade);
@@ -33,26 +44,26 @@ void chegada(queue<paciente> &vermelho, queue<paciente> &amarelo, queue<paciente
     switch (p.prioridade){
         case 'V':
             vermelho.push(p);
-            cout<<"Paciente adicionado com sucesso."<<endl;
+            cout<<"\nPaciente adicionado com sucesso."<<endl;
             break;
         
         case 'A':
             amarelo.push(p);
-            cout<<"Paciente adicionado com sucesso."<<endl;
+            cout<<"\nPaciente adicionado com sucesso."<<endl;
             break;
 
         case 'D':
             verde.push(p);
-            cout<<"Paciente adicionado com sucesso."<<endl;
+            cout<<"\nPaciente adicionado com sucesso."<<endl;
             break;
 
         case 'B':
             branco.push(p);
-            cout<<"Paciente adicionado com sucesso."<<endl;
+            cout<<"\nPaciente adicionado com sucesso."<<endl;
             break;
 
         default:
-            cout << "ERRO: Prioridade inválida! Use V, A, D ou B." << endl;
+            cout << "\nERRO: Prioridade inválida! Use V, A, D ou B." << endl;
             return;  
     }
 
@@ -83,35 +94,40 @@ void calcula_tempo(int &hora_atendimento, int &min_atendimento, queue<paciente> 
 calculando o tempo de espera para cada paciente em cada prioridade. */
 void atender (queue<paciente> &vermelho, queue<paciente> &amarelo, queue<paciente> &verde, queue<paciente> &branco, int &total_atendimento, int &maior_espera, int &total_vermelho, int &total_amarelo, int &total_verde, int &total_branco){
     int hora_atendimento, min_atendimento;
-    cin >> hora_atendimento >> min_atendimento;
+
+    cout << "Digite a hora: ";
+    cin >> hora_atendimento;
+    
+    cout << "Digite os minutos: ";
+    cin >> min_atendimento;
 
     if (vermelho.size() > 0 ){
         calcula_tempo(hora_atendimento, min_atendimento, vermelho, maior_espera);
         vermelho.pop();
         total_atendimento++;
         total_vermelho++;
-        cout << "Atendimento realizado com sucesso." << endl;
+        cout << "\nAtendimento realizado com sucesso." << endl;
 
     } else if (amarelo.size() > 0 ){
         calcula_tempo(hora_atendimento, min_atendimento, amarelo, maior_espera);
         amarelo.pop();
         total_atendimento++;
         total_amarelo++;
-        cout << "Atendimento realizado com sucesso." << endl;
+        cout << "\nAtendimento realizado com sucesso." << endl;
 
     } else if (verde.size() > 0 ){
         calcula_tempo(hora_atendimento, min_atendimento, verde, maior_espera);
         verde.pop();
         total_atendimento++;
         total_verde++;
-        cout << "Atendimento realizado com sucesso." << endl;
+        cout << "\nAtendimento realizado com sucesso." << endl;
 
     } else if (branco.size() > 0 ){
         calcula_tempo(hora_atendimento, min_atendimento, branco, maior_espera);
         branco.pop();
         total_atendimento++;
         total_branco++;
-        cout << "Atendimento realizado com sucesso." << endl;
+        cout << "\nAtendimento realizado com sucesso." << endl;
         
     } else {
         //formatando para aparecer a hora certa, caso contrário ficaria 14:5 ao invés de 14:05 por exemplo
@@ -127,7 +143,7 @@ void atender (queue<paciente> &vermelho, queue<paciente> &amarelo, queue<pacient
 já gravado anteriormente. */
 void consulta(queue<paciente> &vermelho, queue<paciente> &amarelo, queue<paciente> &verde, queue<paciente> &branco, int total_atendimento) {
 
-    cout << "V:" << vermelho.size()
+    cout << "\nV:" << vermelho.size()
          << " A:" << amarelo.size()
          << " D:" << verde.size()
          << " B:" << branco.size()
@@ -138,7 +154,7 @@ void consulta(queue<paciente> &vermelho, queue<paciente> &amarelo, queue<pacient
 /* Função de quit. Printa o relatório final, com dados anteriormente já gravados, como
 o total atendido, total por prioridade, o pico de lotação e a espera máxima em minutos. */
 void quit(int &total_atendimento, int &total_vermelho, int &total_amarelo, int &total_verde, int &total_branco, int &pico_lotacao, int &maior_espera){
-    cout << "---RELATÓRIO FINAL---" << endl
+    cout << "\n---RELATÓRIO FINAL---" << endl
     << "Total atendidos: " << total_atendimento << endl
     << "Por prioridade: " << "V=" << total_vermelho << " A=" <<  total_amarelo << " D=" <<  total_verde << " B=" <<  total_branco
     <<   endl << "Pico de lotação: " << pico_lotacao << endl
@@ -158,11 +174,13 @@ int main(){
 
     // Loop para o menu, até que o usuário escolha a opção 'Q'.
     while (true){
+        cout << endl;
         cout << "ESCOLHA UMA OPÇÃO:" << endl;
         cout << "C - CHEGADA DE UM PACIENTE." << endl;
         cout << "A - REALIZAR UM ATENDIMENTO." << endl;
         cout << "D - EXIBIR INFORMAÇÕES SOBRE O ESTADO ATUAL DA FILA." << endl;
         cout << "Q - ENCERRAR." << endl;
+        cout << endl;
 
         cin >> opcao;
         
@@ -196,4 +214,3 @@ int main(){
 
     return 0; 
 }
-
